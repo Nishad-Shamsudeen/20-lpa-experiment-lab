@@ -1,0 +1,19 @@
+.search{
+        /* position: relative; */
+        position: relative;
+    padding: 6px ;
+    height: 35px;
+    margin:0;
+    border-radius: 8px;
+    width: 140px;
+    border: 1.5px solid #919090;
+    color: #919090;
+    /* background: #3b76b1; */
+    box-shadow: 0 8px 16px #0003;
+    transition: all .3s ease;
+    font-weight: 600;
+    font-size: 16px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease, visibility 1s ease;
+}
