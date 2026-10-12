@@ -6,9 +6,10 @@ class BaseClass:
             print("Entered name is : ",self.name)
 
 
-class SubClass(BaseClass):
-    def default_fun():
+class SubClass(BaseClass): #Inheriting the Base Class
+    def default_fun(self):
          print("Testing")
 
 new_obj = SubClass()
 new_obj.set_name("Nishad")
+new_obj.default_fun()

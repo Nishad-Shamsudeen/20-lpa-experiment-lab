@@ -1,10 +1,7 @@
-name_list = ['Nishad','Naima']
-name_list=name_list+["Neshwa Mehnoor"]
+name_list=['Nishad','naima']
 
-name_list.append('turbo')
+new_member = name_list+ ['Neshwa Mehnooor']
 
-# Directly append from input
-
-name_list.append(input("enter a value"))
-
-print(name_list)
+# new_member.append('Ammar')
+new_member.append(input("enter name"))
+print(new_member)

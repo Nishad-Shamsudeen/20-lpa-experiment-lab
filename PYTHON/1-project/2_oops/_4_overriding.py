@@ -12,7 +12,7 @@ class Subclass(BaseClass):
         print("Subclass Init")
 
         #calling baseclass __init__
-        # Both below works the same,to keep the coading standard use super().__init__()
+        # Both below works the same,to keep the coding standard use super().__init__()
         BaseClass.__init__(self) # This will work ,calling constructor
         super().__init__()# This will work ,calling constructor
         

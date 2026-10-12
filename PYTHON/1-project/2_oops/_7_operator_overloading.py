@@ -10,5 +10,5 @@ second_name = Sample()
 
 first_name.set_name("Nishad")
 second_name.set_name("Shamsudeen")
-full_name = first_name + second_name 
+full_name =     first_name + second_name
 print(full_name)

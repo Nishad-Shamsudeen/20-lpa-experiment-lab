@@ -1,10 +1,8 @@
-def exception_fun(devisor):
+def exception_handle(deviser):
     try:
-        quotient= 10/devisor
-        # print(quotient= 10/devisor)
-        return ("10 is divisible by " + str(devisor) + " and the quotient is " + str(quotient))
+        quotient = 10/deviser
+        return str(10) + "is devisible by" + str(deviser)
     except:
-        return("10 cant devided by "+str(devisor))
-print(exception_fun(2))
+        return "10 is not devisible by " + str(deviser)
 
-
+print(exception_handle(0))

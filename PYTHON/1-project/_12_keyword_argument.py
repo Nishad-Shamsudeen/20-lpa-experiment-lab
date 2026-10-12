@@ -1,3 +1,5 @@
+# To get the correct argument when calling a function,use the same name for argument ->
+#  when calling a funtion
 def keyword_argument_fun(name,age):
     return ("My Name is "+name + ",and i am "+age+" year old.")
 

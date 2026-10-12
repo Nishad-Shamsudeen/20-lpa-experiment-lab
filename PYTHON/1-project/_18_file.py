@@ -1,6 +1,6 @@
 # File writing
 # "w" is one of the file mode or file opening mode
-file=open("_19_new_test_file.py","w")
+file=open("1-project/_19_new_test_file.py","w")
 file.write("print('Nishad')")
 file.close()
 
@@ -10,6 +10,13 @@ file.close()
 # It automatically handles opening and closing the file for you —
 #  even if an error occurs in between. 
 
-with open("_19_new_test_file.py","r") as file_1:
-    print(file_1.read())
+def exception_handler():
+    try:
+        with open("1-project/_19_new_test_file.py","r") as file_1:
+            print(file_1.read())
+    except:
+        return "The Required File is not available"
+    finally:
+        print("This cleanup block always runs.")
 
+print(exception_handler())

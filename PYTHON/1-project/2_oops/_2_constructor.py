@@ -1,35 +1,45 @@
 class SampleConstructor:
-    year =2026
-    def __init__(self,name,age,place):
-        self.name=name
-        self.age=age
-        self.place=place
+    year=2024
+    def __init__(self,name,age,place): #Constructor works when the Object created
+        # pass
+        self.name = name
+        self.age = age
+        self.place = place
+    
+   
 
     def display(self):
-        return ("Name is :" + self.name + "\n"
-                "Age is :" + str(self.age) + "\n"
-                "Place is :" + self.place + "\n"
-                )
-    # Class metod ,its common for each instance that is created from the class
-    @classmethod
+        print("Name : " + self.name + "\n" 
+              "Place : "+ self.place +"\n"
+              "Age : "+str(self.age)+"\n"
+              "Year : " +str(SampleConstructor.year))
+        
+    def add_age(self):
+            self.age=self.age+1
+
+    @classmethod #This is class method .it will be common for all the object that is created from the class
     def add_year(cls):
-        cls.year= cls.year+1
-        return cls.year
-    # This function belongs to the class but does not need any class or object data
-    # It just does its own job like a helper tool anyone can use
+        cls.year=cls.year+1
+
     @staticmethod
-    def sample_function():
-     return "This is the test function"
+    def fun_message():
+         print("Welcome")
+      
 
-        # print("Testing Constructor")
+instance_1=SampleConstructor("Nishad",34,"Bengaluru")
+instance_2=SampleConstructor("Naima",24,"Varkala")
 
-instance_1=SampleConstructor("Nishad",28,"varkala")
-instance_2=SampleConstructor("Naima",18,"varkala")
-display=instance_1.display() 
-display_2=instance_2.display() 
-print(display)
-print(display_2)
-print("**************")
-print(SampleConstructor.year)
-print(SampleConstructor.add_year())
-print(SampleConstructor.sample_function())
+SampleConstructor.fun_message()
+
+instance_1.display()
+print("---------")
+instance_2.display()
+print("---------")
+
+SampleConstructor.add_year()
+instance_1.add_age()
+instance_2.add_age()
+instance_1.display()
+print("---------")
+instance_2.display()
+

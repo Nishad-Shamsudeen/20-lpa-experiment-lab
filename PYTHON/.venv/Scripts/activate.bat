@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=D:\MyGoal-20LPA\GIT-Deploy\PYTHON\.venv"
+set "VIRTUAL_ENV=D:\MyGoal-40LPA\dev-lab\GIT-Deploy\40-lpa-experiment-lab\PYTHON\.venv"
 
 if not defined PROMPT set PROMPT=$P$G
 
