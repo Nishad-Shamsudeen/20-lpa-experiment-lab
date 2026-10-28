@@ -7,7 +7,7 @@ file_json ="C://Users//NSD//Desktop//employees.json"
 with open (file_destination,"r") as file:
     csv_reader =  csv.reader(file)
     header = next(csv_reader)
-
+    print(header)
     with open(file_json,'w') as file_json:
      for emp in csv_reader:
          emp_dict = {}
