@@ -1,0 +1,14 @@
+{
+    "total_rows": 4,
+    "invalid_row": 2,
+    "errors": [
+        {
+            "row": 2,
+            "reason": "Emp Id Is Not a Valid Number"
+        },
+        {
+            "row": 2,
+            "reason": "Emp Id Is Not a Valid Number"
+        }
+    ]
+}
