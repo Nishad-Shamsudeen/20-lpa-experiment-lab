@@ -1,14 +1,38 @@
 {
     "total_rows": 4,
-    "invalid_row": 2,
+    "invalid_row": 0,
     "errors": [
+        {
+            "row": 1,
+            "reason": "Emp Id Is Not a Valid Number"
+        },
         {
             "row": 2,
             "reason": "Emp Id Is Not a Valid Number"
         },
         {
             "row": 2,
-            "reason": "Emp Id Is Not a Valid Number"
+            "reason": "Check Out Time Is Not Valid"
+        },
+        {
+            "row": 3,
+            "reason": "Emp name Is Empty"
+        },
+        {
+            "row": 3,
+            "reason": "Check In Time Is Not Valid"
+        },
+        {
+            "row": 3,
+            "reason": "Check In Time Is Not Valid"
+        },
+        {
+            "row": 4,
+            "reason": "Check In Time Is Not Valid"
+        },
+        {
+            "row": 4,
+            "reason": "Check In Time Is Not Valid"
         }
     ]
 }
