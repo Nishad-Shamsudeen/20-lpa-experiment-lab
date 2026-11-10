@@ -20,19 +20,23 @@
         },
         {
             "row": 3,
-            "reason": "Check In Time Is Not Valid"
+            "reason": "Check In Time Is Empty",
+            "validity reason": "Check In Time Is Not Valid"
         },
         {
             "row": 3,
-            "reason": "Check In Time Is Not Valid"
+            "reason": "Check In Time Is Empty",
+            "validity reason": "Check In Time Is Not Valid"
         },
         {
             "row": 4,
-            "reason": "Check In Time Is Not Valid"
+            "reason": "Check In Time Is Empty",
+            "validity reason": "Check In Time Is Not Valid"
         },
         {
             "row": 4,
-            "reason": "Check In Time Is Not Valid"
+            "reason": "Check In Time Is Empty",
+            "validity reason": "Check In Time Is Not Valid"
         }
     ]
 }
