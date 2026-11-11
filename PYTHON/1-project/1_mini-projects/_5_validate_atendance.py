@@ -31,7 +31,6 @@ with open (att_input,"r") as file:
       for index,row in enumerate(rows):
           # print(f"Iteration =={index+1}")
           for inner_index,emp_data in enumerate(row):
-            print("Inner Loop Start")
             error ={}
             if inner_index==0:
                try:
@@ -55,41 +54,19 @@ with open (att_input,"r") as file:
                 error["row"] = index+1
                 error["reason"] = "Check Out Time Is Empty"
                 errors_list.append(error)
-           
-            
-            print(f"Current CSV Row : {index+1}")
-            print(f"Inner Index : {inner_index}")
-            print(f"Employee Data : {emp_data}")
-            print("")
-            print("########## Append Before Validation #############")
-            print(f"Error Before First Append : {error}")
-            print(f"Error List First Append : {errors_list}")
-            print(" ")
-            if inner_index ==2 or inner_index ==3:
-              # error ={}
-              is_date=is_valid_datetime(emp_data)
-              print(f"Date is valid? : {is_date}")
-              print(f"Inner Index after Funtion call: {inner_index}")              
-              if not is_date and inner_index==2:
 
+            if inner_index ==2 or inner_index ==3:
+              error ={}
+              is_date=is_valid_datetime(emp_data)
+              if not is_date and inner_index==2:
                 error["row"] = index+1
                 error["validity reason"] = "Check In Time Is Not Valid"
-                # print(f"Error Reason : {error["reason"]}")
-                print(f"Current inner index before append:{inner_index}")
-                print(f"Error Before append : {error}")
-                
-                errors_list.append(error)
-                print(" ")
-                print("########## After Validation Append #############")
-                print(f"Error List After First Append : {errors_list}")
-
+                errors_list.append(error)         
               elif not is_date and inner_index==3:
                 error["row"] = index+1
                 error["reason"] = "Check Out Time Is Not Valid"
-                # print(f"Current inner index before append:{inner_index}")
-
                 errors_list.append(error)
-            print("Inner Loop Ends")
+            
 
             
       report['invalid_row']=invalid_row 
