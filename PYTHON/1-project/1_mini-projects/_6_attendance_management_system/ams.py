@@ -15,4 +15,16 @@ class Employee:
         self.emp_id = self._next_id
         Employee._next_id +=1
 
+@dataclass
+class AttendanceRecord:
+    emp_id:int
+    check_in:str
+    check_out:str
+    attendance_id:int
+    #shared counter used for Attendance ID
+    _next_attendance_id:ClassVar[int]=0
+
+    def __post_init(self):
+        self.attendance_id = self._next_attendance_id
+        AttendanceRecord.attendance_id +=1
 
