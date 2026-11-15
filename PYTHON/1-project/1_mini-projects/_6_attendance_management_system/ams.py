@@ -34,9 +34,7 @@ class AttendanceRecord:
 
 BASE_DIR = Path(__file__).resolve().parent
 att_record_json =BASE_DIR/"files"/"ams_att_record.json"
-print(f" BASE_DIR Path:{BASE_DIR}")
-# print("######")
-# print(f" att_record_json Path:{att_record_json}")
+
 #Adding Employee Details
 employees = {}
 def add_employee():
@@ -44,7 +42,7 @@ def add_employee():
     emp_department = input(f"Enter {name}'s Department:")
     emp = Employee(emp_name=name,department=emp_department)
     employees[f"emp_{emp.emp_id}"]=emp
-add_employee()
+# add_employee()
 # add_employee()
 
 def is_valid_datetime(date_string):
@@ -56,7 +54,7 @@ def is_valid_datetime(date_string):
 
 def is_valid_date(date_string):
   try:
-    datetime.strptime(date_string," %d-%m-%Y")
+    datetime.strptime(date_string,"%d-%m-%Y")
     return True
   except ValueError:
     return False
@@ -96,16 +94,20 @@ def validate_emp_id():
       print("Enter Valid Employee Id")
       validate_emp_id()
     
-validate_emp_id()
+# validate_emp_id()
 
 def track_attendance_record(emp_id,date):
 
-   pass
+  with open (att_record_json,"r") as file:
+    print(att_record_json)
+    
+   
    
    
 tracker_id=input("Enter Employee Id to check")
 
 tracker_date=input("Enter attendance date to check DD-MM-YYYY")
 is_date_valid = is_valid_date(tracker_date)
+print(f"is_date_valid:{is_date_valid}")
 if is_date_valid:
  track_attendance_record(tracker_id,tracker_date)
