@@ -42,7 +42,8 @@ def add_employee():
     emp_department = input(f"Enter {name}'s Department:")
     emp = Employee(emp_name=name,department=emp_department)
     employees[f"emp_{emp.emp_id}"]=emp
-# add_employee()
+    print(employees)
+add_employee()
 # add_employee()
 
 def is_valid_datetime(date_string):
@@ -67,19 +68,20 @@ def add_attendance_record(emp_id):
         if emp_id==employee.emp_id:
            check_in = input("Enter Check in Time-HH:MM DD-MM-YYYY")
            is_check_in =  is_valid_datetime(check_in)
+           print(f"is_check_in:{is_check_in}")
            if is_check_in:
             check_out =input("Enter Check out Time-HH:MM DD-MM-YYYY")
             is_checkout = is_valid_datetime(check_out)
             if is_checkout:
                attendance=AttendanceRecord(emp_id,check_in,check_out)
-            #    print(attendance)
+               print(f"Attendance Object:{attendance}")
                emp_attendance = {}
                emp_attendance["employee_id"]=emp_id
                emp_attendance["attendance_id"]=attendance.attendance_id
                emp_attendance['Check in']=attendance.check_in
                emp_attendance['check out']=attendance.check_out
                att_record.append(emp_attendance)
-            else :
+           else :
               print("Enter Valid Punch Time !")
               add_attendance_record(emp_id)
      json.dump(att_record,json_file,indent=4)
@@ -94,14 +96,32 @@ def validate_emp_id():
       print("Enter Valid Employee Id")
       validate_emp_id()
     
-# validate_emp_id()
+validate_emp_id()
+
+def date_formater(date_str):
+   date_obj = datetime.strptime(date_str,"%H:%M %d-%m-%Y")
+   return datetime.strftime(date_obj,"%d-%m-%Y")
 
 def track_attendance_record(emp_id,date):
+  print("Function works")
+  with open (att_record_json,"r", encoding="utf-8") as file:
+    data = json.load(file)
 
-  with open (att_record_json,"r") as file:
-    print(att_record_json)
-    
-   
+    for emp_attendance in data:
+
+       print(f"Employee Id:{emp_attendance['employee_id'] }")
+       if emp_attendance['employee_id'] == emp_id:
+          emp_att_date = emp_attendance['Check in']
+          att_date = date_formater(emp_att_date)
+          print(f"Attendance Format:{att_date}")
+          print(f"Attendance Date from Input:{date}")
+          if att_date == date:
+             print("Employee Attendance Details is available")
+            #  print(f"Employee Name:{emp_attendance}")
+          
+       else:
+          print("Entered Employee have no attendance record")
+    # print(f"Json File :{data}")
    
    
 tracker_id=input("Enter Employee Id to check")
