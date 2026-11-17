@@ -48,8 +48,8 @@ add_employee()
 #validate checkin and checkout time is in acceptable format
 def is_valid_datetime(date_string):
   try:
-    datetime.strptime(date_string,"%H:%M %d-%m-%Y")
-    return True
+    punch_date =datetime.strptime(date_string,"%H:%M %d-%m-%Y")
+    return punch_date
   except ValueError:
     return False
   
@@ -64,39 +64,43 @@ def is_valid_date(date_string):
 #add attendance record
 def add_attendance_record(emp_id):
 
- if  att_record_json.exists() or att_record_json.stat().st_size == 0:
-  print("json not available")
-  data=[]
- else:
-  print("json available ")
-  with open (att_record_json,"r", encoding="utf-8") as file:
-    data = json.load(file)
-    
- with open(att_record_json,"w") as json_file:
-    #  att_record = []
-     for i in employees :
-        employee=employees[i]
-        if emp_id==employee.emp_id:
-           check_in = input("Enter Check in Time-HH:MM DD-MM-YYYY")
-           is_check_in =  is_valid_datetime(check_in)
-           
-           if is_check_in:
-            check_out =input("Enter Check out Time-HH:MM DD-MM-YYYY")
-            is_checkout = is_valid_datetime(check_out)
-            if is_checkout:
-               attendance=AttendanceRecord(emp_id,check_in,check_out)
-               print(f"Attendance Object:{attendance}")
-               emp_attendance = {}
-               emp_attendance["employee_id"]=emp_id
-               emp_attendance["attendance_id"]=attendance.attendance_id
-               emp_attendance['Check in']=attendance.check_in
-               emp_attendance['check out']=attendance.check_out
-               data.append(emp_attendance)
+  key = f"emp_{emp_id}"
+  if key in employees: 
+     if not att_record_json.exists() or att_record_json.stat().st_size == 0:
+      data=[]
+     else:
+      with open (att_record_json,"r", encoding="utf-8") as file:
+        data = json.load(file)
+        
+     with open(att_record_json,"w") as json_file:
+        #  att_record = []
+            employee=employees[key]
+            if emp_id==employee.emp_id:
+               check_in = input("Enter Check in Time-HH:MM DD-MM-YYYY")
+               is_check_in =  is_valid_datetime(check_in)
                
-           else :
-              print("Enter Valid Punch Time !")
-              add_attendance_record(emp_id)
-     json.dump(data,json_file,indent=4)
+               if is_check_in:
+                check_out =input("Enter Check out Time-HH:MM DD-MM-YYYY")
+                is_checkout = is_valid_datetime(check_out)
+                if is_checkout:
+                   if is_checkout<is_check_in:
+                     print("Check out cannot before Check in")
+                   else:
+                     attendance=AttendanceRecord(emp_id,check_in,check_out)
+                     print(f"Attendance Object:{attendance}")
+                     emp_attendance = {}
+                     emp_attendance["employee_id"]=emp_id
+                     emp_attendance["attendance_id"]=attendance.attendance_id
+                     emp_attendance['Check in']=attendance.check_in
+                     emp_attendance['check out']=attendance.check_out
+                     data.append(emp_attendance)
+                   
+                else :
+                  print("Enter Valid Punch Time !")
+                  add_attendance_record(emp_id)
+            json.dump(data,json_file,indent=4)
+  else :
+     print("Employee Not Found")  
 
 #Checking Employee ID Valid or not
 def validate_emp_id():
